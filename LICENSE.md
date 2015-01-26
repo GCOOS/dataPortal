@@ -1,4 +1,4 @@
-Copyright (c) 2015, Gulf of Mexico Coastal and Ocean Observing System (GCOOS)
+Copyright (c) 2015, Gulf of Mexico Coastal and Ocean Observing System (GCOOS). 
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
