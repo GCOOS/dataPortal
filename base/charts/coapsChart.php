@@ -6,8 +6,9 @@
 	// LICENSE: Creative Commons by Attribution 3.0 United States (CC BY 3.0 US)
 	//          Details at: http://creativecommons.org/licenses/by/3.0/us/legalcode
 	
-	try {		include_once("config/config.php");
-$frontStr = "";
+	try {		
+		include_once("config/config.php");
+		$frontStr = "";
 		$sumArr = array("airPressure" => 0, "airTemperature" => 0, "chlorophyll" => 0, "dewPoint" => 0, "dissolvedOxygen" => 0, "oceanCurrents" => 0, "relHumidity" => 0, "salinity" => 0, "solar" => 0, "turbidity" => 0, "waterLevel" => 0, "waterTemperature" => 0, "winds" => 0);
 		$first = true;
 

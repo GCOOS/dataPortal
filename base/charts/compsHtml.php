@@ -1,5 +1,5 @@
 <?php
-	// Module: nerrsChart.php
+	// Module: compsHtml.php
 	// Object: create google line chart with observaton counts for each day plotted
 	// Return: Void
 
