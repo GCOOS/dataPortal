@@ -1,0 +1,180 @@
+@charset "utf-8";
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000033;
+	font-size: 11px;
+}
+.thrColFixHdr #container {
+	width: 1200px;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #FFFFFF;
+	margin: 0 auto;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+} 
+.thrColFixHdr #header {
+	background: #FFFFFF;
+	padding: 0 0px 0 0px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+	color: #999999;
+} 
+.thrColFixHdr #header h1 {
+	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+}
+.thrColFixHdr  #sidemenu {
+	float: left; /* since this element is floated, a width must be given */
+	width: 230px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #FFFFFF; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 0px 0px 0px 0px; /* padding keeps the content of the div away from the edges */
+}
+.thrColFixHdr #sidebar2 {
+	float: right; /* since this element is floated, a width must be given */
+	width: 230px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #FFFFFF; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 5px 5px 5px 5px; /* padding keeps the content of the div away from the edges */
+	margin-top: 20px;
+}
+.thrColFixHdr #mainContent {
+	padding: 0 0px;
+	margin-left: 0px;
+} 
+.thrColFixHdr #footer {
+	padding: 0 0px 0 0px; /* this padding matches the left alignment of the elements in the divs that appear above it. */
+	background:#FFFFFF;
+	color: #CCCCCC;
+	font-size: 10px;
+} 
+.thrColFixHdr #footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 10px 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+.thrColFixHdr  #smalltitle   {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-style: italic;
+	background-color: #CE9B1D;
+	color: #FFFFFF;
+}
+.thrColFixHdr #bigtitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	background-color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+}
+.thrColFixHdr #warning {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	background-color: #CCCCCC;
+}
+
+/*map stuff*/
+#legend_container{
+	font-family: arial;
+	font-size: 10px;
+	font-weight: bold;
+}
+#tabs{
+	font-family: arial;
+	font-size: 10px;
+	font-weight: bold;
+}
+.divlegend{
+	background-color: #FFF;
+	top: 100px;
+	left: 160px;
+}
+.divlegend2{
+	background-color: #FFF;
+	top: 100px;
+	left: 160px;
+}
+.divlegend_hr { height: 1px; border: solid 1px #996699; }
+#map-canvas {
+margin: 1px;
+padding: 1px;
+height: 100%;
+}
+#data_container{
+}
+#data_container{
+	font-size: 10px;
+	font-family: arial;
+}
+#data_output{
+    background-color: #FFF;
+    /*height: 200px;
+    width: 346px;*/
+    height: 400px;
+    width: 400px;
+    overflow: scroll;
+}
+#disclaimer_container{
+	cursor: move;
+	float: left;
+}
+#disclaimer_output{
+	font-family: arial;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+	color: #000;
+	background-color: #FFF;
+}
+#data_links{
+	font-family: arial;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+}
+#main_container{
+	width: 1200px;
+	height: 600px;
+	position: relative;
+}
+#main_container2{
+	position: relative;
+}
+#map-canvas{
+}
+#gcoos_logo{
+	background-color: #003b6f;
+}
+#generated_table{
+	white-space: nowrap;
+}
+#data_chart{
+	width: 350px;
+	height: 250px;
+}
+#generated_table{
+	cursor: pointer;   
+}
+#click_hint{
+	padding-bottom: 10px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 10px;
+}
+#custom_data_window{
+	text-align: left;
+}
+#map_options{
+}
