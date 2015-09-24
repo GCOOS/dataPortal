@@ -1,0 +1,114 @@
+CREATE TABLE "airPressure" ("sensorId" int,"observationDate" datetime,"barometric" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE airPressureLatest ('sensorId' int UNIQUE, 'observationDate' datetime, 'barometric' float);
+CREATE TABLE airPressureWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'barometric' float);
+CREATE TABLE airTemperature (
+  sensorId         int,
+  observationDate  datetime,
+  airTemperature   float
+, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE airTemperatureLatest (sensorId int UNIQUE,observationDate datetime, airTemperature float);
+CREATE TABLE airTemperatureWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'airTemperature' float);
+CREATE TABLE "chlorophyll" ("sensorId" int DEFAULT (null) ,"observationDate" datetime,"chlorophyll" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE chlorophyllLatest ('sensorId' int DEFAULT (null) UNIQUE,'observationDate' datetime,'chlorophyll' float);
+CREATE TABLE chlorophyllWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'chlorophyll' float);
+CREATE TABLE "country" ("iso_code2" varchar(2) NOT NULL ,"iso_code3" varchar(3) NOT NULL ,"Fullname" text);
+CREATE TABLE dataObsCount (countDate date, organizationId integer, airPressure integer, airTemperature integer, chlorophyll integer, dewPoint integer, dissolvedOxygen integer, oceanCurrents integer, relHumidity integer, salinity integer, solar integer, turbidity integer, waterLevel integer, waterTemperature integer, winds integer, "wave" integer, UNIQUE(countDate, organizationId));
+CREATE TABLE "dewPoint" ("sensorId" int,"observationDate" datetime,"dewPoint" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE dewPointLatest ('sensorId' int UNIQUE,'observationDate' datetime,'dewPoint' float);
+CREATE TABLE dewPointWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'dewPoint' float);
+CREATE TABLE dissolvedOxygen (
+  sensorID         int,
+  observationDate  datetime,
+  DO               float,
+  DOConc           float,
+  zox9             float
+, "zox10" FLOAT, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE dissolvedOxygenLatest (sensorID int UNIQUE,observationDate datetime, DO float, DOConc float, zox9 float, 'zox10' FLOAT);
+CREATE TABLE dissolvedOxygenWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'DO' float, 'DOConc' float, 'zox9' float, 'zox10' float);
+CREATE TABLE "oceanCurrents" ("sensorId" int,"observationDate" datetime,"instrument" smallint,"verticalDatum" float,"direction" float,"speed" float,"verticalVelocity" float,"errorVelocity" float,"pctGood3Beam" smallint,"pctGood4Beam" smallint,"pctRejected" smallint,"pctBad" smallint,"echoIntensityB1" smallint,"echoIntensityB2" smallint,"echoIntensityB3" smallint,"echoIntensityB4" smallint,"correlationMagnitudeB1" smallint,"correlationMagnitudeB2" smallint,"correlationMagnitudeB3" smallint,"correlationMagnitudeB4" smallint,"qualityFlags" varchar(9),"binNumber" smallint DEFAULT 1 ,"Veast" float,"Vnorth" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE oceanCurrentsLatest (sensorId integer UNIQUE,'observationDate' datetime,'verticalDatum' float, 'direction' float, 'speed' float);
+CREATE TABLE oceanCurrentsWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'verticalDatum' float, 'direction' float, 'speed' float, "verticalVelocity" FLOAT);
+CREATE TABLE "organization" ("rowid" INTEGER PRIMARY KEY, "shortname" varchar(20) NOT NULL ,"name" varchar(80) NOT NULL ,"countryId" int,"contactName" text,"contactEmail" text,"url" text, "SOSUrl" TEXT);
+CREATE TABLE "platform" ("rowid" INTEGER PRIMARY KEY,"name" text,"description" text,"loc_lat" float,"loc_lon" float,"organizationId" integer,"platformTypeId" integer,"url" text,"rss" text,"image" text,"GCOOS_Folder" text,"local" text,"urn" text,"status" INTEGER, "nameSource" TEXT DEFAULT NDBC, 'wmoId' TEXT, 'ndbcLabel' TEXT);
+CREATE TABLE "platformType" ("name" varchar(40) NOT NULL ,"classification" text);
+CREATE TABLE "relHumidity" ("sensorId" int,"observationDate" datetime,"relHumidity" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE relHumidityLatest (sensorId int UNIQUE, observationDate datetime, relHumidity float);
+CREATE TABLE relHumidityWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'relHumidity' float);
+CREATE TABLE "salinity" ("sensorId" int,"observationDate" datetime,"verticalPosition" float,"salinity" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE salinityLatest (sensorId int UNIQUE, observationDate datetime, verticalPosition float, salinity float);
+CREATE TABLE salinityWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'verticalPosition' float,'salinity' float);
+CREATE TABLE "sensor" ("rowid" INTEGER PRIMARY KEY ,"platformId" int,"sensorTypeId" int,"localId" text,"sensorNumber" smallint,"verticalPosition" float,"firstObsDate" datetime,"lastObsDate" datetime,"status" int);
+CREATE TABLE "sensorType" ("shortTypeName" varchar(25),"typeName" text,"dataType" text, "status" INTEGER DEFAULT 0);
+CREATE TABLE "solar" ("sensorID" int,"observationDate" datetime,"shortWave" float,"longWave" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE solarLatest (sensorID int UNIQUE, observationDate datetime, shortWave float, longWave float);
+CREATE TABLE solarWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'shortWave' float,'longWave' float);
+CREATE TABLE "turbidity" ("sensorID" int,"observationDate" datetime,"turbidity" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE turbidityLatest (sensorID int UNIQUE, observationDate datetime, turbidity float);
+CREATE TABLE turbidityWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'turbidity' float);
+CREATE TABLE "waterLevel" ("sensorId" int,"observationDate" datetime,"type" smallint,"waterLevel" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE waterLevelLatest (sensorId int UNIQUE, observationDate datetime, type smallint, waterLevel float);
+CREATE TABLE waterLevelWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'type' float,'waterLevel' float);
+CREATE TABLE "waterTemperature" ("sensorId" int,"observationDate" datetime,"verticalPosition" float,"temperature" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE waterTemperatureLatest (sensorId int UNIQUE, observationDate datetime, verticalPosition float, temperature float);
+CREATE TABLE waterTemperatureWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'verticalPosition' float,'temperature' float);
+CREATE TABLE wave ("sensorId" integer,"observationDate" datetime,"significantWaveHeight" float,"dominantWavePeriod" float,"averageWavePeriod" float,"meanWaveDirection" float,"swellHeight" float,"swellPeriod" float,"swellDirection" float,"windWaveHeight" float,"windWavePeriod" float,"windWaveDirection" float,"frequencyBands" integer, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE "waveLatest" ("sensorId" integer UNIQUE,"observationDate" datetime,"significantWaveHeight" float,"dominantWavePeriod" float,"averageWavePeriod" float,"meanWaveDirection" float,"swellHeight" float,"swellPeriod" float,"swellDirection" float,"windWaveHeight" float,"windWavePeriod" float,"windWaveDirection" float,"frequencyBands" integer);
+CREATE TABLE "waveWeek" ("sensorId" integer UNIQUE,"observationDate" datetime,"significantWaveHeight" float,"dominantWavePeriod" float,"averageWavePeriod" float,"meanWaveDirection" float,"swellHeight" float,"swellPeriod" float,"swellDirection" float,"windWaveHeight" float,"windWavePeriod" float,"windWaveDirection" float,"frequencyBands" integer);
+CREATE TABLE "winds" ("sensorId" integer,"observationDate" datetime,"verticalPosition" float,"windSpeed" float,"windDirection" float,"windGust" float, "qcFlag" varchar(64) DEFAULT 2);
+CREATE TABLE windsLatest (sensorId integer UNIQUE, observationDate datetime, verticalPosition float, windSpeed float, windDirection float, windGust float);
+CREATE TABLE windsWeek ('rowid' integer primary key autoincrement,'sensorId' integer,'observationDate' datetime,'verticalPosition' float,'windSpeed' float,'windDirection' float,'windGust' float);
+CREATE VIEW "observationSummary" AS SELECT rowid, firstObsDate, lastObsDate, platformId as platform_id, sensorTypeId as sensorType_id FROM sensor;
+CREATE VIEW 'observationSummaryView' AS  SELECT O.rowid, O.platform_id, P.name as platform, P.loc_lat, P.loc_lon, O.firstObsDate, O.lastObsDate, SE.rowid as sensorId, SE.sensorNumber as sensorNumber, S.shortTypeName, S.dataType as sensorType from observationSummary as O join platform as P on P.rowid=O.platform_id join sensorType as S on S.rowid=O.sensorType_id join sensor as SE on SE.platformId=O.platform_id and SE.sensorTypeId=O.sensorType_id WHERE datetime(O.firstObsDate)<datetime('now');
+CREATE TRIGGER airPressureTrigger AFTER INSERT ON airPressure BEGIN INSERT OR REPLACE INTO airPressureLatest (sensorId, observationDate, barometric) VALUES (new.sensorId, new.observationDate, new.barometric); INSERT INTO airPressureWeek (sensorId, observationDate, barometric) VALUES (new.sensorId, new.observationDate, new.barometric); DELETE FROM airPressureWeek WHERE observationDate <= date('now', '-3 day'); END;
+CREATE TRIGGER airTemperatureTrigger AFTER INSERT ON airTemperature BEGIN INSERT OR REPLACE INTO airTemperatureLatest (sensorId, observationDate, airTemperature) VALUES (new.sensorId, new.observationDate, new.airTemperature); INSERT INTO airTemperatureWeek (sensorId, observationDate, airTemperature) VALUES (new.sensorId, new.observationDate, new.airTemperature); DELETE FROM airTemperatureWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER chlorophyllTrigger AFTER INSERT ON chlorophyll BEGIN INSERT OR REPLACE INTO chlorophyllLatest (sensorId, observationDate, chlorophyll) VALUES (new.sensorId, new.observationDate, new.chlorophyll); INSERT INTO chlorophyllWeek (sensorId, observationDate, chlorophyll) VALUES (new.sensorId, new.observationDate, new.chlorophyll); DELETE FROM chlorophyllWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER dewPointTrigger AFTER INSERT ON dewPoint BEGIN INSERT OR REPLACE INTO dewPointLatest (sensorId, observationDate, dewPoint) VALUES (new.sensorId, new.observationDate, new.dewPoint); INSERT INTO dewPointWeek (sensorId, observationDate, dewPoint) VALUES (new.sensorId, new.observationDate, new.dewPoint); DELETE FROM dewPointWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER dissolvedOxygenTrigger AFTER INSERT ON dissolvedOxygen BEGIN INSERT OR REPLACE INTO dissolvedOxygenLatest (sensorId, observationDate, DO, DOConc, zox9, zox10) VALUES (new.sensorId, new.observationDate, new.DO, new.DOConc, new.zox9, new.zox10); INSERT INTO dissolvedOxygenWeek (sensorId, observationDate, DO, DOConc, zox9, zox10) VALUES (new.sensorId, new.observationDate, new.DO, new.DOConc, new.zox9, new.zox10); DELETE FROM dissolvedOxygenWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER oceanCurrentsTrigger AFTER INSERT ON oceanCurrents BEGIN INSERT OR REPLACE INTO oceanCurrentsLatest (sensorId, observationDate, verticalDatum, direction, speed) VALUES (new.sensorId, new.observationDate, new.verticalDatum, new.direction, new.speed); INSERT INTO oceanCurrentsWeek (sensorId, observationDate, verticalDatum, direction, speed,verticalVelocity) VALUES (new.sensorId, new.observationDate, new.verticalDatum, new.direction, new.speed, new.verticalVelocity); DELETE FROM oceanCurrentsWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER relHumidityTrigger AFTER INSERT ON relHumidity BEGIN INSERT OR REPLACE INTO relHumidityLatest (sensorId, observationDate, relHumidity) VALUES (new.sensorId, new.observationDate, new.relHumidity); INSERT INTO relHumidityWeek (sensorId, observationDate, relHumidity) VALUES (new.sensorId, new.observationDate, new.relHumidity); DELETE FROM relHumidityWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER salinityTrigger AFTER INSERT ON salinity BEGIN INSERT OR REPLACE INTO salinityLatest (sensorId, observationDate, verticalPosition, salinity) VALUES (new.sensorId, new.observationDate, new.verticalPosition, new.salinity); INSERT INTO salinityWeek (sensorId, observationDate, verticalPosition, salinity) VALUES (new.sensorId, new.observationDate, new.verticalPosition, new.salinity); DELETE FROM salinityWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER solarTrigger AFTER INSERT ON solar BEGIN INSERT OR REPLACE INTO solarLatest (sensorId, observationDate, shortWave, longWave) VALUES (new.sensorId, new.observationDate, new.shortWave, new.longWave); INSERT INTO solarWeek (sensorId, observationDate, shortWave, longWave) VALUES (new.sensorId, new.observationDate, new.shortWave, new.longWave); DELETE FROM solarWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER turbidityTrigger AFTER INSERT ON turbidity BEGIN INSERT OR REPLACE INTO turbidityLatest (sensorId, observationDate, turbidity) VALUES (new.sensorId, new.observationDate, new.turbidity); INSERT INTO turbidityWeek (sensorId, observationDate, turbidity) VALUES (new.sensorId, new.observationDate, new.turbidity); DELETE FROM turbidityWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER waterLevelTrigger AFTER INSERT ON waterLevel BEGIN INSERT OR REPLACE INTO waterLevelLatest (sensorId, observationDate, type, waterLevel) VALUES (new.sensorId, new.observationDate, new.type, new.waterLevel); INSERT INTO waterLevelWeek (sensorId, observationDate, type, waterLevel) VALUES (new.sensorId, new.observationDate, new.type, new.waterLevel); DELETE FROM waterLevelWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER waterTemperatureTrigger AFTER INSERT ON waterTemperature BEGIN INSERT OR REPLACE INTO waterTemperatureLatest (sensorId, observationDate, verticalPosition, temperature) VALUES (new.sensorId, new.observationDate, new.verticalPosition, new.temperature); INSERT INTO waterTemperatureWeek (sensorId, observationDate, verticalPosition, temperature) VALUES (new.sensorId, new.observationDate, new.verticalPosition, new.temperature); DELETE FROM waterTemperatureWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE TRIGGER waveTrigger AFTER INSERT ON wave BEGIN INSERT OR REPLACE INTO waveLatest (sensorId,observationDate,significantWaveHeight,dominantWavePeriod,averageWavePeriod,meanWaveDirection,swellHeight,swellPeriod,swellDirection,windWaveHeight,windWavePeriod,windWaveDirection,frequencyBands) VALUES (new.sensorId,new.observationDate,new.significantWaveHeight,new.dominantWavePeriod,new.averageWavePeriod,new.meanWaveDirection,new.swellHeight,new.swellPeriod,new.swellDirection,new.windWaveHeight,new.windWavePeriod,new.windWaveDirection,new.frequencyBands); INSERT INTO waveWeek (sensorId,observationDate,significantWaveHeight,dominantWavePeriod,averageWavePeriod,meanWaveDirection,swellHeight,swellPeriod,swellDirection,windWaveHeight,windWavePeriod,windWaveDirection,frequencyBands) VALUES (new.sensorId,new.observationDate,new.significantWaveHeight,new.dominantWavePeriod,new.averageWavePeriod,new.meanWaveDirection,new.swellHeight,new.swellPeriod,new.swellDirection,new.windWaveHeight,new.windWavePeriod,new.windWaveDirection,new.frequencyBands); DELETE FROM waveWeek WHERE observationDate <= date("now", "-3 day"); END;
+CREATE TRIGGER windsTrigger AFTER INSERT ON winds BEGIN INSERT OR REPLACE INTO windsLatest (sensorId, observationDate, verticalPosition, windSpeed, windDirection, windGust)  VALUES (new.sensorId, new.observationDate, new.verticalPosition, new.windSpeed, new.windDirection, new.windGust); INSERT INTO windsWeek (sensorId, observationDate, verticalPosition, windSpeed, windDirection, windGust)  VALUES (new.sensorId, new.observationDate, new.verticalPosition, new.windSpeed, new.windDirection, new.windGust); DELETE FROM windsWeek WHERE observationDate <= date('now', '-3 day');END;
+CREATE INDEX airPressureLatestSensorIndex ON airPressureLatest(sensorId);
+CREATE INDEX airPressureSensorIndex ON airPressure(sensorId);
+CREATE INDEX airPressureWeekSensorIndex ON airPressureWeek(sensorId);
+CREATE INDEX airTemperatureLatestSensorIndex ON airTemperatureLatest(sensorId);
+CREATE INDEX airTemperatureSensorIndex ON airTemperature(sensorId);
+CREATE INDEX airTemperatureWeekSensorIndex ON airTemperatureWeek(sensorId);
+CREATE INDEX chlorophyllLatestSensorIndex ON chlorophyllLatest(sensorId);
+CREATE INDEX chlorophyllSensorIndex ON chlorophyll(sensorId);
+CREATE INDEX chlorophyllWeekSensorIndex ON chlorophyllWeek(sensorId);
+CREATE INDEX dewPointLatestSensorIndex ON dewPointLatest(sensorId);
+CREATE INDEX dewPointSensorIndex ON dewPoint(sensorId);
+CREATE INDEX dewPointWeekSensorIndex ON dewPointWeek(sensorId);
+CREATE INDEX dissolvedOxygenLatestSensorIndex ON dissolvedOxygenLatest(sensorId);
+CREATE INDEX dissolvedOxygenSensorIndex ON dissolvedOxygen(sensorId);
+CREATE INDEX dissolvedOxygenWeekSensorIndex ON dissolvedOxygenWeek(sensorId);
+CREATE INDEX oceanCurrentsLatestSensorIndex ON oceanCurrentsLatest(sensorId);
+CREATE INDEX oceanCurrentsSensorIndex ON oceanCurrents(sensorId);
+CREATE INDEX oceanCurrentsWeekSensorIndex ON oceanCurrentsWeek(sensorId);
+CREATE INDEX relHumidityLatestSensorIndex ON relHumidityLatest(sensorId);
+CREATE INDEX relHumiditySensorIndex ON relHumidity(sensorId);
+CREATE INDEX relHumidityWeekSensorIndex ON relHumidityWeek(sensorId);
+CREATE INDEX salinityLatestSensorIndex ON salinityLatest(sensorId);
+CREATE INDEX salinitySensorIndex ON salinity(sensorId);
+CREATE INDEX salinityWeekSensorIndex ON salinityWeek(sensorId);
+CREATE INDEX solarLatestSensorIndex ON solarLatest(sensorId);
+CREATE INDEX solarSensorIndex ON solar(sensorId);
+CREATE INDEX solarWeekSensorIndex ON solarWeek(sensorId);
+CREATE INDEX turbidityLatestSensorIndex ON turbidityLatest(sensorId);
+CREATE INDEX turbiditySensorIndex ON turbidity(sensorId);
+CREATE INDEX turbidityWeekSensorIndex ON turbidityWeek(sensorId);
+CREATE INDEX waterLevelLatestSensorIndex ON waterLevelLatest(sensorId);
+CREATE INDEX waterLevelSensorIndex ON waterLevel(sensorId);
+CREATE INDEX waterLevelWeekSensorIndex ON waterLevelWeek(sensorId);
+CREATE INDEX waterTemperatureLatestSensorIndex ON waterTemperatureLatest(sensorId);
+CREATE INDEX waterTemperatureSensorIndex ON waterTemperature(sensorId);
+CREATE INDEX waterTemperatureWeekSensorIndex ON waterTemperatureWeek(sensorId);
+CREATE INDEX windsLatestSensorIndex ON windsLatest(sensorId);
+CREATE INDEX windsSensorIndex ON winds(sensorId);
+CREATE INDEX windsWeekSensorIndex ON windsWeek(sensorId);
